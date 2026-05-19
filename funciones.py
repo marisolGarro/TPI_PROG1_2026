@@ -1,3 +1,20 @@
+import csv
+import os
+
+def escribir_csv(paises):
+    campos=["nombre","poblacion","superficie","continente"]
+    with open("paises.csv","w",newline="",encoding="utf-8-sig") as archivo:
+        writer=csv.DictWriter(archivo,fieldnames=campos)
+        writer.writeheader()
+        writer.writerows(paises)
+
+paises=[
+    {"nombre":"Argentina","poblacion":45376763,"superficie":2780400,"continente":"América"},  
+{"nombre":"Japón","poblacion":125800000,"superficie":377975,"continente":"Asia" }, 
+{"nombre":"Brasil","poblacion":213993437,"superficie":8515767,"continente":"América" }, 
+{"nombre":"Alemania","poblacion":83149300,"superficie":357022,"continente":"Europa"}  
+]
+
 def mostrar_menu():
     print("""\n   MENU
 1. Agregar país

@@ -1,5 +1,7 @@
 from funciones import*
 
+escribir_csv(paises)
+
 while True:
     mostrar_menu()
     opcion=input("Ingrese una opción: ")
