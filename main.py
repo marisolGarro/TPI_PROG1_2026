@@ -1,4 +1,5 @@
 from funciones import*
+from funciones2 import*
 
 escribir_csv(paises)
 
