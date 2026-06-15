@@ -13,7 +13,7 @@ while True:
         case "2":
             pass
         case "3":
-            pass
+            buscar_pais()
         case "4":
             while True:
                 filtrar_menu()
