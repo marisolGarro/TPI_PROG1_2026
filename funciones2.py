@@ -18,15 +18,15 @@ def normalizar(texto):
     ).lower() #convierto todo a minúscula
 
 def buscar_pais():
-    pais_buscado=normalizar(input("Ingrese el país que desea buscar: "))
+    pais_buscado=normalizar(input("Ingrese el país que desea buscar: ")).strip()
     
     with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
         #Cada fila la representa como un diccionario
         lector=csv.DictReader(archivo)
         encontrado=False
         for fila in lector:
-            #verifico sila cadena de caracteres ingresado en pais_buscado esta contenido en el nombre del país
-            if pais_buscado in normalizar(fila["nombre"]):
+            #Verifica si el pais empieza por los caracteres ingresados
+            if (normalizar(fila["nombre"])).startswith(pais_buscado):
                 print(f"\nPais: {fila["nombre"]}")
                 print(f"Población: {fila["poblacion"]}")
                 print(f"Superficie: {fila["superficie"]} km²")
