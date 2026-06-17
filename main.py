@@ -14,6 +14,8 @@ while True:
                 pass
             case "3":
                 buscar_pais()
+                input("\nPresione enter para continuar")
+                limpiar_consola()
             case "4":
                 while True:
                     filtrar_menu()
@@ -30,6 +32,8 @@ while True:
                             break
                         case _:
                             print("La opción ingresada es incorrecta")
+                input("\nPresione enter para continuar")
+                limpiar_consola()
             case "5":
                 while True:
                     ordenar_menu()
@@ -46,6 +50,8 @@ while True:
                             break
                         case _:
                             print("La opción ingresada es incorrecta")
+                input("\nPresione enter para continuar")
+                limpiar_consola()
             case "6":
                 while True:
                     estadistica_menu()

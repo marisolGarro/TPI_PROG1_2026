@@ -3,6 +3,10 @@ import os
 from funciones import*
 import unicodedata
 
+#Limpiar la consola
+def limpiar_consola():
+    os.system("cls")
+
 #La funcion normalizar recibe un texto y lo tranforma para poder trabajar
 def normalizar(texto):
     #''.join vulve a unir los caracteres sin dejar espacios para formar el texto después de analizarlo
