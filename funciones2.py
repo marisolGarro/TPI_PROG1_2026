@@ -25,7 +25,7 @@ def buscar_pais():
             if pais_buscado in normalizar(fila["nombre"]):
                 print(f"\nPais: {fila["nombre"]}")
                 print(f"Población: {fila["poblacion"]}")
-                print(f"Superficie: {fila["superficie"]}")
+                print(f"Superficie: {fila["superficie"]} km²")
                 print(f"Contienente: {fila["continente"]}\n")
                 print("-"*30)
                 encontrado=True
@@ -41,7 +41,7 @@ def filtrar_pais_continente():
             if buscar_continente==normalizar(lista["continente"]):
                 print(f"\nPais: {lista["nombre"]}")
                 print(f"Población: {lista["poblacion"]}")
-                print(f"Superficie: {lista["superficie"]}\n")  
+                print(f"Superficie: {lista["superficie"]} km²\n")  
                 print("-"*30)
                 encontrado=True
         if not encontrado:
@@ -69,7 +69,7 @@ def filtrar_por_población():
             if poblacion_menor<int(fila["poblacion"])<poblacion_sup:
                 print(f"\nPais: {fila["nombre"]}")
                 print(f"Población: {fila["poblacion"]}")
-                print(f"Superficie: {fila["superficie"]}")
+                print(f"Superficie: {fila["superficie"]} km²")
                 print(f"Contienente: {fila["continente"]}\n")
                 print("-"*30)
                 encontrado=True
@@ -98,7 +98,7 @@ def filtrar_por_superficie():
             if superficie_menor<int(fila["superficie"])<superficie_sup:
                 print(f"\nPais: {fila["nombre"]}")
                 print(f"Población: {fila["poblacion"]}")
-                print(f"Superficie: {fila["superficie"]}")
+                print(f"Superficie: {fila["superficie"]} km²")
                 print(f"Contienente: {fila["continente"]}\n")
                 print("-"*30)
                 encontrado=True
@@ -120,15 +120,66 @@ def ordenar_por_pais():
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
                     print(f"Población: {pais["poblacion"]}")
-                    print(f"Superficie: {pais["superficie"]}")
+                    print(f"Superficie: {pais["superficie"]} km²")
                     print(f"Contienente: {pais["continente"]}\n")
                     print("-"*30)
             case "2":
-                #reverse=True
                 paises_ordenados = sorted(paises, key=lambda pais: normalizar(pais["nombre"]),reverse=True)
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
                     print(f"Población: {pais["poblacion"]}")
-                    print(f"Superficie: {pais["superficie"]}")
+                    print(f"Superficie: {pais["superficie"]} km²")
                     print(f"Contienente: {pais["continente"]}\n")
                     print("-"*30)
+            case _:
+                print("La opción ingresada es incorrecta")
+
+def ordenar_por_poblacion():
+    print("""
+\n1)Ordenar de manera ascendente 
+2)Ordenar de manera descendente
+""")
+    opcion=input("Ingrese la opción deseada: ")
+    with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
+        lector=csv.DictReader(archivo)
+        paises=list(lector)
+        match opcion:
+            case "1":
+                paises_ordenados = sorted(paises, key=lambda pais: int(pais["poblacion"]))
+                for pais in paises_ordenados:
+                    print(f"\nPais: {pais["nombre"]}")
+                    print(f"Población: {pais["poblacion"]}\n")
+                    print("-"*30)
+            case "2":
+                paises_ordenados = sorted(paises, key=lambda pais: int(pais["poblacion"]),reverse=True)
+                for pais in paises_ordenados:
+                    print(f"\nPais: {pais["nombre"]}")
+                    print(f"Población: {pais["poblacion"]}\n")
+                    print("-"*30)
+            case _:
+                print("La opción ingresada es incorrecta")
+
+def ordenar_por_superficie():
+    print("""
+\n1)Ordenar de manera ascendente 
+2)Ordenar de manera descendente
+""")
+    opcion=input("Ingrese la opción deseada: ")
+    with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
+        lector=csv.DictReader(archivo)
+        paises=list(lector)
+        match opcion:
+            case "1":
+                paises_ordenados = sorted(paises, key=lambda pais: int(pais["superficie"]))
+                for pais in paises_ordenados:
+                    print(f"\nPais: {pais["nombre"]}")
+                    print(f"Superficie: {pais["superficie"]} km²\n")
+                    print("-"*30)
+            case "2":
+                paises_ordenados = sorted(paises, key=lambda pais: int(pais["superficie"]),reverse=True)
+                for pais in paises_ordenados:
+                    print(f"\nPais: {pais["nombre"]}")
+                    print(f"Superficie: {pais["superficie"]} km²\n")
+                    print("-"*30)
+            case _:
+                print("La opción ingresada es incorrecta")

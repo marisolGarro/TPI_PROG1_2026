@@ -38,9 +38,9 @@ while True:
                         case "1":
                             ordenar_por_pais()
                         case "2":
-                            pass
+                            ordenar_por_poblacion()
                         case "3":
-                            pass
+                            ordenar_por_superficie()
                         case "4":
                             print("Volviendo al menú principal")
                             break
