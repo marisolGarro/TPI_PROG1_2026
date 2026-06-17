@@ -113,9 +113,9 @@ def ordenar_por_pais():
     opcion=input("Ingrese la opción deseada: ")
     with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
         lector=csv.DictReader(archivo)
+        paises=list(lector)
         match opcion:
             case "1":
-                paises=list(lector)
                 paises_ordenados = sorted(paises, key=lambda pais: normalizar(pais["nombre"]))
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
@@ -124,4 +124,11 @@ def ordenar_por_pais():
                     print(f"Contienente: {pais["continente"]}\n")
                     print("-"*30)
             case "2":
-                pass
+                #reverse=True
+                paises_ordenados = sorted(paises, key=lambda pais: normalizar(pais["nombre"]),reverse=True)
+                for pais in paises_ordenados:
+                    print(f"\nPais: {pais["nombre"]}")
+                    print(f"Población: {pais["poblacion"]}")
+                    print(f"Superficie: {pais["superficie"]}")
+                    print(f"Contienente: {pais["continente"]}\n")
+                    print("-"*30)
