@@ -22,9 +22,9 @@ while True:
                         case "1":
                             filtrar_pais_continente()
                         case "2":
-                            pass
+                            filtrar_por_población()
                         case "3":
-                            pass
+                            filtrar_por_superficie()
                         case "4":
                             print("Volviendo al menú principal")
                             break
@@ -36,7 +36,7 @@ while True:
                     opcion=input("Ingrese una opcion: ")
                     match(opcion):
                         case "1":
-                            pass
+                            ordenar_por_pais()
                         case "2":
                             pass
                         case "3":
