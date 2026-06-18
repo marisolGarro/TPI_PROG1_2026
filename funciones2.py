@@ -43,66 +43,28 @@ def filtrar_pais_continente():
 "2. América",
 "3. Asia",
 "4. Europa",
-"5. Oceanía",
-"6. Salir"]
+"5. Oceanía"]
     ).ask()
+    continentes = {
+    "1. África": "África",
+    "2. América": "América",
+    "3. Asia": "Asia",
+    "4. Europa": "Europa",
+    "5. Oceanía": "Oceanía"}
+    continente_elegido = continentes[opcion]
     with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
         lector=csv.DictReader(archivo)
         encontrado=False
-        match opcion:
-            case "1. África":
-                for fila in lector:     
-                    if fila["continente"]=="África":
-                        print(f"\nPais: {fila["nombre"]}")
-                        print(f"Población: {fila["poblacion"]}")
-                        print(f"Superficie: {fila["superficie"]} km²\n")
-                        print("-"*30)
-                        encontrado=True
-                if not encontrado:
-                    raise ValueError("No hay países registrados en ese continente")
-            case "2. América":
-                for fila in lector:
-                    if fila["continente"]=="América":
-                        print(f"\nPais: {fila["nombre"]}")
-                        print(f"Población: {fila["poblacion"]}")
-                        print(f"Superficie: {fila["superficie"]} km²\n")
-                        print("-"*30)
-                        encontrado=True
-                if not encontrado:
-                    raise ValueError("No hay países registrados en ese continente")
-            case "3. Asia":
-                for fila in lector:
-                    if fila["continente"]=="Asia":
-                        print(f"\nPais: {fila["nombre"]}")
-                        print(f"Población: {fila["poblacion"]}")
-                        print(f"Superficie: {fila["superficie"]} km²\n")
-                        print("-"*30)
-                        encontrado=True
-                if not encontrado:
-                    raise ValueError("No hay países registrados en ese continente")
-            case "4. Europa":
-                for fila in lector:
-                    if fila["continente"]=="Europa":
-                        print(f"\nPais: {fila["nombre"]}")
-                        print(f"Población: {fila["poblacion"]}")
-                        print(f"Superficie: {fila["superficie"]} km²\n")
-                        print("-"*30)
-                        encontrado=True
-                if not encontrado:
-                    raise ValueError("No hay países registrados en ese continente")
-            case "5. Oceanía":
-                for fila in lector:
-                    if fila["continente"]=="Europa":
-                        print(f"\nPais: {fila["nombre"]}")
-                        print(f"Población: {fila["poblacion"]}")
-                        print(f"Superficie: {fila["superficie"]} km²\n")
-                        print("-"*30)
-                        encontrado=True
-                if not encontrado:
-                    raise ValueError("No hay países registrados en ese continente")
-            case "6. Salir":
-                print("Volviendo al menú Filtrar paises")
-                return
+        for fila in lector:
+            if fila["continente"]==continente_elegido:
+                print(f"\nPaís: {fila['nombre']}")
+                print(f"Población: {fila['poblacion']}")
+                print(f"Superficie: {fila['superficie']} km²\n")
+                print("-" * 30)
+                encontrado=True
+        if not encontrado:
+            raise ValueError("No hay países registrados en ese continente")
+            
 
 def filtrar_por_población():
     while True: 

@@ -8,9 +8,13 @@ while True:
     try:
         match(opcion):
             case "1. Agregar país":
-                pass
+                agregar_pais()
+                input("\nPresione enter para continuar")
+                limpiar_consola()
             case "2. Actualizar población y superficie":
-                pass
+                actualizar_pais()
+                input("\nPresione enter para continuar")
+                limpiar_consola()
             case "3. Buscar país":
                 buscar_pais()
                 input("\nPresione enter para continuar")
@@ -46,20 +50,9 @@ while True:
                 input("\nPresione enter para continuar")
                 limpiar_consola()
             case "6. Mostrar estadísticas":
-                while True:
-                    opcion=estadistica_menu()
-                    match(opcion):
-                        case "1. País con mayor y menor población":
-                            pass
-                        case "2. Promedio de población":
-                            pass
-                        case "3. Promedio de superficie":
-                            pass
-                        case "4. Cantidad de países por continente":
-                            pass
-                        case "5. Salir":
-                            print("Volviendo al menú principal")
-                            break
+                mostrar_estadisticas()
+                input("\nPresione enter para continuar")
+                limpiar_consola()
             case "7. Salir":
                 print("Hasta luego!")
                 break
