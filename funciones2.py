@@ -37,21 +37,20 @@ def buscar_pais():
             raise ValueError("El país ingresado no existe en el registro")
     
 def filtrar_pais_continente():
-    print("""
-\nElija el continente:
-1)África
-2)América
-3)Asia
-4)Europa
-5)Oceanía
-6)Salir
-""")
-    opcion=input("Elija la opción deseada: ")
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices=["1. África",
+"2. América",
+"3. Asia",
+"4. Europa",
+"5. Oceanía",
+"6. Salir"]
+    ).ask()
     with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
         lector=csv.DictReader(archivo)
         encontrado=False
         match opcion:
-            case "1":
+            case "1. África":
                 for fila in lector:     
                     if fila["continente"]=="África":
                         print(f"\nPais: {fila["nombre"]}")
@@ -61,7 +60,7 @@ def filtrar_pais_continente():
                         encontrado=True
                 if not encontrado:
                     raise ValueError("No hay países registrados en ese continente")
-            case "2":
+            case "2. América":
                 for fila in lector:
                     if fila["continente"]=="América":
                         print(f"\nPais: {fila["nombre"]}")
@@ -71,7 +70,7 @@ def filtrar_pais_continente():
                         encontrado=True
                 if not encontrado:
                     raise ValueError("No hay países registrados en ese continente")
-            case "3":
+            case "3. Asia":
                 for fila in lector:
                     if fila["continente"]=="Asia":
                         print(f"\nPais: {fila["nombre"]}")
@@ -81,7 +80,7 @@ def filtrar_pais_continente():
                         encontrado=True
                 if not encontrado:
                     raise ValueError("No hay países registrados en ese continente")
-            case "4":
+            case "4. Europa":
                 for fila in lector:
                     if fila["continente"]=="Europa":
                         print(f"\nPais: {fila["nombre"]}")
@@ -91,7 +90,7 @@ def filtrar_pais_continente():
                         encontrado=True
                 if not encontrado:
                     raise ValueError("No hay países registrados en ese continente")
-            case "5":
+            case "5. Oceanía":
                 for fila in lector:
                     if fila["continente"]=="Europa":
                         print(f"\nPais: {fila["nombre"]}")
@@ -101,11 +100,9 @@ def filtrar_pais_continente():
                         encontrado=True
                 if not encontrado:
                     raise ValueError("No hay países registrados en ese continente")
-            case "6":
-                print("Volviendo al menú principal")
+            case "6. Salir":
+                print("Volviendo al menú Filtrar paises")
                 return
-            case _:
-                print("La opción ingresada es incorrecta")
 
 def filtrar_por_población():
     while True: 
@@ -166,16 +163,16 @@ def filtrar_por_superficie():
             raise ValueError("No se encuentraron países en el rango de superficie ingresado")
 
 def ordenar_por_pais():
-    print("""
-\n1)Ordenar nombres de paises de A -> Z
-2)Ordenar nombres de paises de Z -> A
-""")
-    opcion=input("Ingrese la opción deseada: ")
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices=["1. Ordenar nombres de paises de A -> Z",
+"2. Ordenar nombres de paises de Z -> A"]
+    ).ask()
     with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
         lector=csv.DictReader(archivo)
         paises=list(lector)
         match opcion:
-            case "1":
+            case "1. Ordenar nombres de paises de A -> Z":
                 paises_ordenados = sorted(paises, key=lambda pais: normalizar(pais["nombre"]))
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
@@ -183,7 +180,7 @@ def ordenar_por_pais():
                     print(f"Superficie: {pais["superficie"]} km²")
                     print(f"Contienente: {pais["continente"]}\n")
                     print("-"*30)
-            case "2":
+            case "2. Ordenar nombres de paises de Z -> A":
                 paises_ordenados = sorted(paises, key=lambda pais: normalizar(pais["nombre"]),reverse=True)
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
@@ -195,22 +192,22 @@ def ordenar_por_pais():
                 print("La opción ingresada es incorrecta")
 
 def ordenar_por_poblacion():
-    print("""
-\n1)Ordenar de manera ascendente 
-2)Ordenar de manera descendente
-""")
-    opcion=input("Ingrese la opción deseada: ")
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices=["1. Ordenar de manera ascendente",
+"2. Ordenar de manera descendente"]
+    ).ask()
     with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
         lector=csv.DictReader(archivo)
         paises=list(lector)
         match opcion:
-            case "1":
+            case "1. Ordenar de manera ascendente":
                 paises_ordenados = sorted(paises, key=lambda pais: int(pais["poblacion"]))
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
                     print(f"Población: {pais["poblacion"]}\n")
                     print("-"*30)
-            case "2":
+            case "2. Ordenar de manera descendente":
                 paises_ordenados = sorted(paises, key=lambda pais: int(pais["poblacion"]),reverse=True)
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
@@ -220,22 +217,22 @@ def ordenar_por_poblacion():
                 print("La opción ingresada es incorrecta")
 
 def ordenar_por_superficie():
-    print("""
-\n1)Ordenar de manera ascendente 
-2)Ordenar de manera descendente
-""")
-    opcion=input("Ingrese la opción deseada: ")
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices=["1. Ordenar de manera ascendente",
+"2. Ordenar de manera descendente"]
+    ).ask()
     with open("paises.csv","r",newline="",encoding="utf-8-sig") as archivo:
         lector=csv.DictReader(archivo)
         paises=list(lector)
         match opcion:
-            case "1":
+            case "1. Ordenar de manera ascendente":
                 paises_ordenados = sorted(paises, key=lambda pais: int(pais["superficie"]))
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")
                     print(f"Superficie: {pais["superficie"]} km²\n")
                     print("-"*30)
-            case "2":
+            case "2. Ordenar de manera descendente":
                 paises_ordenados = sorted(paises, key=lambda pais: int(pais["superficie"]),reverse=True)
                 for pais in paises_ordenados:
                     print(f"\nPais: {pais["nombre"]}")

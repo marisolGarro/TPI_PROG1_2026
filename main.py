@@ -4,77 +4,65 @@ from funciones2 import*
 escribir_csv(paises)
 
 while True:
-    mostrar_menu()
-    opcion=input("Ingrese una opción: ")
+    opcion=menu()
     try:
         match(opcion):
-            case "1":
+            case "1. Agregar país":
                 pass
-            case "2":
+            case "2. Actualizar población y superficie":
                 pass
-            case "3":
+            case "3. Buscar país":
                 buscar_pais()
                 input("\nPresione enter para continuar")
                 limpiar_consola()
-            case "4":
+            case "4. Filtrar país":
                 while True:
-                    filtrar_menu()
-                    opcion=input("Ingrese una opcion: ")
+                    opcion=filtrar_menu()
                     match(opcion):
-                        case "1":
+                        case "1. Continente":
                             filtrar_pais_continente()
-                        case "2":
+                        case "2. Rango de población":
                             filtrar_por_población()
-                        case "3":
+                        case "3. Rango de superficie":
                             filtrar_por_superficie()
-                        case "4":
+                        case "4. Salir":
                             print("Volviendo al menú principal")
                             break
-                        case _:
-                            print("La opción ingresada es incorrecta")
                 input("\nPresione enter para continuar")
                 limpiar_consola()
-            case "5":
+            case "5. Ordenar países":
                 while True:
-                    ordenar_menu()
-                    opcion=input("Ingrese una opcion: ")
+                    opcion=ordenar_menu()
                     match(opcion):
-                        case "1":
+                        case "1. Nombre":
                             ordenar_por_pais()
-                        case "2":
+                        case "2. Población":
                             ordenar_por_poblacion()
-                        case "3":
+                        case "3. Superficie":
                             ordenar_por_superficie()
-                        case "4":
+                        case "4. Salir":
                             print("Volviendo al menú principal")
                             break
-                        case _:
-                            print("La opción ingresada es incorrecta")
                 input("\nPresione enter para continuar")
                 limpiar_consola()
-            case "6":
+            case "6. Mostrar estadísticas":
                 while True:
-                    estadistica_menu()
-                    opcion=input("Ingrese una opcion: ")
+                    opcion=estadistica_menu()
                     match(opcion):
-                        case "1":
+                        case "1. País con mayor y menor población":
                             pass
-                        case "2":
+                        case "2. Promedio de población":
                             pass
-                        case "3":
+                        case "3. Promedio de superficie":
                             pass
-                        case "4":
+                        case "4. Cantidad de países por continente":
                             pass
-                        case "5":
+                        case "5. Salir":
                             print("Volviendo al menú principal")
                             break
-                        case _:
-                            print("La opción ingresada es incorrecta")
-            case "7":
+            case "7. Salir":
                 print("Hasta luego!")
                 break
-            case _:
-                print("La opción ingresada es incorrecta")
     except FileNotFoundError:
         print("Error: No se encontró el archivo paises.csv")
     except KeyError:

@@ -1,5 +1,5 @@
 import csv
-import os
+import questionary
 
 def escribir_csv(paises):
     campos=["nombre","poblacion","superficie","continente"]
@@ -14,36 +14,44 @@ paises=[
 {"nombre":"Brasil","poblacion":213993437,"superficie":8515767,"continente":"América" }, 
 {"nombre":"Alemania","poblacion":83149300,"superficie":357022,"continente":"Europa"}  
 ]
+def menu():
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices=["1. Agregar país",
+"2. Actualizar población y superficie",
+"3. Buscar país",
+"4. Filtrar país",
+"5. Ordenar países",
+"6. Mostrar estadísticas",
+"7. Salir"]
+    ).ask()
+    return opcion
 
-def mostrar_menu():
-    print("""\n   MENU
-1. Agregar país
-2. Actualizar población y superficie
-3. Buscar país
-4. Filtrar país
-5. Ordenar países
-6. Mostrar estadísticas
-7. Salir
-""")
 def filtrar_menu():
-    print("""\n Filtrar países por:
-1. Continente
-2. Rango de población
-3. Rango de superficie
-4. Salir
-""")
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices= ["1. Continente",
+"2. Rango de población",
+"3. Rango de superficie",
+"4. Salir"]
+).ask()
+    return opcion
 def ordenar_menu():
-    print("""\n Ordenar países por:
-1. Nombre
-2. Población
-3. Superficie
-4. Salir
-""")
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices= ["1. Nombre",
+"2. Población",
+"3. Superficie",
+"4. Salir"]
+).ask()
+    return opcion
 def estadistica_menu():
-    print("""\n Mostrar estadísticas:
-1. País con mayor y menor población
-2. Promedio de población
-3. Promedio de superficie
-4. Cantidad de países por continente
-5. Salir
-""")
+    opcion= questionary.select(
+        message="Selecciona: ",
+        choices= ["1. País con mayor y menor población",
+"2. Promedio de población",
+"3. Promedio de superficie",
+"4. Cantidad de países por continente",
+"5. Salir"]
+).ask()
+    return opcion
